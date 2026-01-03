@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Hub | EvidenceLock</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        :root {
+            --primary: #0284c7; --bg: #f8fafc; --text: #0f172a; --muted: #64748b; --border: #e2e8f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Manrope', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); padding: 50px 20px; }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1.5px; }
+        .header h1 span { color: var(--primary); }
+        .header p { color: var(--muted); font-size: 1.1rem; margin-top: 10px; }
+
+        .module-section { margin-bottom: 40px; }
+        .section-title { 
+            font-size: 0.75rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            color: var(--primary); 
+            margin-bottom: 20px; 
+            border-bottom: 2px solid var(--border); 
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .test-card {
+            background: #fff; padding: 25px; border-radius: 20px; border: 1px solid var(--border);
+            text-decoration: none; color: inherit; transition: 0.3s; display: flex; align-items: center; gap: 15px;
+        }
+        .test-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .test-card i { font-size: 2rem; color: var(--primary); background: #f0f9ff; padding: 12px; border-radius: 12px; }
+        .test-card div b { display: block; font-size: 1rem; margin-bottom: 4px; }
+        .test-card div span { font-size: 0.8rem; color: var(--muted); }
+
+        .badge { font-size: 0.65rem; background: #e0f2fe; color: var(--primary); padding: 3px 8px; border-radius: 50px; font-weight: 800; margin-left: auto;}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Evidence<span>Lock</span> Role Hub</h1>
+            <p>Select a portal to test role-specific functionalities and workflows.</p>
+        </div>
+
+        <div class="module-section">
+            <div class="section-title"><i class='bx bxs-user-badge'></i> Admin Portal (System Controller)</div>
+            <div class="grid">
+                <a href="admin/admin-dashboard.html" class="test-card">
+                    <i class='bx bxs-dashboard'></i>
+                    <div><b>Admin Dashboard</b><span>System-wide Overview</span></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="module-section">
+            <div class="section-title"><i class='bx bxs-graduation'></i> Senior Officer (Supervision)</div>
+            <div class="grid">
+                <a href="senior-officer/so-dashboard.html" class="test-card">
+                    <i class='bx bxs-layout'></i>
+                    <div><b>SO Dashboard</b><span>Case & Team Monitoring</span></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="module-section">
+            <div class="section-title"><i class='bx bxs-search-alt-2'></i> Investigator (Field Collection)</div>
+            <div class="grid">
+                <a href="investigator/io-dashboard.html" class="test-card">
+                    <i class='bx bxs-grid-alt'></i>
+                    <div><b>IO Dashboard</b><span>Assigned Evidence Workbox</span></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="module-section">
+            <div class="section-title"><i class='bx bxs-check-shield'></i> Auditor (Compliance)</div>
+            <div class="grid">
+                <a href="auditor/auditor-dashboard.html" class="test-card">
+                    <i class='bx bxs-pie-chart-alt-2'></i>
+                    <div><b>Auditor Dashboard</b><span>Integrity Metrics</span></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initiate Case | EvidenceLock Admin</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        :root {
+            --primary: #0284c7;    
+            --secondary: #0ea5e9;  
+            --bg-light: #f8fafc;   
+            --text-dark: #0f172a;  
+            --text-muted: #64748b; 
+            --border: #e2e8f0;     
+            --white: #ffffff;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 280px;
+            background: var(--text-dark);
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; gap: 12px;
+            font-size: 1.5rem; font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .logo i { color: var(--secondary); font-size: 2rem; }
+
+        .nav-links { list-style: none; flex: 1; }
+        .nav-links li { margin-bottom: 8px; }
+        .nav-links a {
+            display: flex; align-items: center; gap: 15px;
+            color: #94a3b8; text-decoration: none;
+            padding: 12px 15px; border-radius: 12px;
+            font-weight: 600; transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--secondary);
+        }
+
+        /* --- MAIN WRAPPER --- */
+        .main-wrapper {
+            margin-left: 280px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- CONTENT AREA --- */
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--white);
+            padding: 45px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+
+        .form-header {
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .form-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .form-header p {
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* --- FORM STYLING --- */
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full-width { grid-column: span 2; }
+
+        /* --- TOP HEADER --- */
+        header {
+            background: var(--white); padding: 20px 40px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .admin-profile { display: flex; align-items: center; gap: 12px; }
+        .admin-profile img { width: 40px; border-radius: 50%; border: 2px solid var(--primary); }
+        .badge-admin { background: #fee2e2; color: #ef4444; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; }
+
+        label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        input, select, textarea {
+            padding: 14px 18px;
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+        }
+
+        textarea { resize: vertical; min-height: 120px; }
+
+        /* --- PRIORITY RADIOS --- */
+        .priority-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .priority-item {
+            flex: 1;
+            position: relative;
+        }
+
+        .priority-item input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .priority-label {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .priority-item input:checked + .priority-label.low { border-color: #22c55e; color: #22c55e; background: #f0fdf4; }
+        .priority-item input:checked + .priority-label.med { border-color: #eab308; color: #eab308; background: #fefce8; }
+        .priority-item input:checked + .priority-label.high { border-color: #ef4444; color: #ef4444; background: #fef2f2; }
+
+        /* --- BUTTONS --- */
+        .btn-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+        }
+
+        .btn-cancel {
+            background: transparent;
+            border: 1px solid var(--border) !important;
+            color: var(--text-dark);
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: #0369a1;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo"><i class='bx bxs-shield-alt-2'></i><span>EvidenceLock</span></div>
+        <ul class="nav-links">
+            <li><a href="admin-dashboard.html"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
+            <li><a href="update.html"><i class='bx bxs-group'></i> User Management</a></li>
+            <li><a href="#" class="active"><i class='bx bxs-folder-plus'></i> Case Creation</a></li>
+            <li><a href="audit-log.html"><i class='bx bxs-receipt'></i> Master Logs</a></li>
+            <li><a href="case-evidence-log.html"><i class='bx bxs-file-find'></i> Evidence Registry</a></li>
+            <li><a href="case-status.html"><i class='bx bx-transfer-alt'></i> Change Status</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <header>
+            <div class="header-left">
+                <span style="font-weight: 700; color: var(--text-muted);">Admin Control Panel</span>
+            </div>
+            <div class="admin-profile">
+                <span class="badge-admin">SYSTEM ADMIN</span>
+                <img src="https://ui-avatars.com/api/?name=Admin&background=0f172a&color=fff" alt="Admin">
+            </div>
+        </header>
+        <main class="content-area">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Initiate Official Case</h2>
+                    <p>Provide primary metadata and appoint a Supervising Senior Officer.</p>
+                </div>
+
+                <form id="createCaseForm">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label>Case ID (Internal)</label>
+                            <input type="text" placeholder="e.g. EL-2026-X01" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Case Category</label>
+                            <select required>
+                                <option value="" disabled selected>Select Category</option>
+                                <option>Cybercrime</option>
+                                <option>Financial Fraud</option>
+                                <option>Narcotics</option>
+                                <option>Corporate Espionage</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label>Case Title / Name</label>
+                            <input type="text" placeholder="Brief descriptive title" required>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label>Case Description</label>
+                            <textarea placeholder="Outline initial nature of investigation..."></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Appoint Senior Officer</label>
+                            <select required>
+                                <option value="" disabled selected>Select Authority...</option>
+                                <option>Director Michael Vance</option>
+                                <option>Comm. Sarah Jenkins</option>
+                                <option>Chief Inspector Robert Chen</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Department / Unit</label>
+                            <input type="text" placeholder="e.g. Cyber Forensic Unit A">
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label>Investigation Priority</label>
+                            <div class="priority-options">
+                                <div class="priority-item">
+                                    <input type="radio" name="priority" id="low" value="low">
+                                    <label for="low" class="priority-label low">LOW</label>
+                                </div>
+                                <div class="priority-item">
+                                    <input type="radio" name="priority" id="med" value="med" checked>
+                                    <label for="med" class="priority-label med">MEDIUM</label>
+                                </div>
+                                <div class="priority-item">
+                                    <input type="radio" name="priority" id="high" value="high">
+                                    <label for="high" class="priority-label high">HIGH</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-cancel">Discard Draft</button>
+                        <button type="submit" class="btn btn-submit">
+                            Initialize & Assign <i class='bx bx-check-double'></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('createCaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("New Case Created. Senior Officer has been notified of assignment.");
+        });
+    </script>
+</body>
+</html>

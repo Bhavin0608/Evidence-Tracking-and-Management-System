@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authority Portal | EvidenceLock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+    <div class="main-wrapper">
+        <div class="info-side">
+            <div class="brand">
+                <i class='bx bxs-shield-alt-2 icon-logo'></i>
+                <h1>Evidence<span>Lock</span></h1>
+            </div>
+            <p class="brand-sub">The global standard in digital chain of custody, ensuring data integrity through cryptographic verification.</p>
+            <!-- <div class="feature-tag">
+                <i class='bx bx-check-double'></i> SHA-256 Verified
+            </div> -->
+        </div>
+
+        <div class="form-side">
+            <div class="form-card">
+                <div class="title-area">
+                    <h2>Authority Registration</h2>
+                    <p>Enter your official credentials to access the forensic vault.</p>
+                </div>
+
+                <form id="registrationForm">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>FULL NAME</label>
+                            <input type="text" placeholder="Detective Alex" required>
+                        </div>
+                        <div class="input-group">
+                            <label>OFFICIAL EMAIL</label>
+                            <input type="email" placeholder="alex@agency.gov" required>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>AGE</label>
+                            <input type="number" placeholder="28" required>
+                        </div>
+                        <div class="input-group">
+                            <label>DATE OF BIRTH</label>
+                            <input type="date" required>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>GENDER</label>
+                            <select required>
+                                <option value="" disabled selected>Select</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>ASSIGNED ROLE</label>
+                            <select required>
+                                <option value="" disabled selected>Select Role</option>
+                                <option>Admin</option>
+                                <option>Senior Authority</option>
+                                <option>Investigator</option>
+                                <option>Auditor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>SECURITY PASSWORD</label>
+                            <input type="password" placeholder="••••••••" required>
+                        </div>
+                        <div class="input-group">
+                            <label>CONFIRM PASSWORD</label>
+                            <input type="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Secure Account Registration <i class='bx bx-right-arrow-alt'></i>
+                    </button>
+                </form>
+                <!-- <p class="login-link">Already verified? <a href="#">Login Access</a></p> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

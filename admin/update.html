@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile | EvidenceLock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+    <div class="main-wrapper">
+        <div class="info-side">
+            <div class="profile-preview">
+                <div class="avatar-wrapper">
+                    <img src="https://ui-avatars.com/api/?name=User&background=0ea5e9&color=fff&size=128" id="profileDisplay" alt="User">
+                    <label for="avatarUpload" class="upload-badge">
+                        <i class='bx bxs-camera'></i>
+                    </label>
+                    <input type="file" id="avatarUpload" hidden accept="image/*">
+                </div>
+                <h2 id="displayUserName">Investigator Name</h2>
+                <p class="role-badge">Official Investigator</p>
+            </div>
+            
+            <div class="security-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Last Login</span>
+                    <span class="stat-value">Jan 03, 2026</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Security Level</span>
+                    <span class="stat-value">Level 4 (Encrypted)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-side">
+            <div class="form-card">
+                <div class="title-area">
+                    <h2>Edit Authority Profile</h2>
+                    <p>Update your personal information and system credentials below.</p>
+                </div>
+
+                <form id="updateProfileForm">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>FULL NAME</label>
+                            <input type="text" value="Detective Alex Smith" required>
+                        </div>
+                        <div class="input-group">
+                            <label>OFFICIAL EMAIL</label>
+                            <input type="email" value="alex.smith@cyberunit.gov" readonly style="opacity: 0.7; cursor: not-allowed;">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>AGE</label>
+                            <input type="number" value="28" required>
+                        </div>
+                        <div class="input-group">
+                            <label>DATE OF BIRTH</label>
+                            <input type="date" value="1998-05-15" required>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>GENDER</label>
+                            <select required>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>ASSIGNED ROLE</label>
+                            <input type="text" value="Investigator" readonly style="opacity: 0.7; cursor: not-allowed;">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>NEW PASSWORD (OPTIONAL)</label>
+                            <input type="password" placeholder="Leave blank to keep current">
+                        </div>
+                        <div class="input-group">
+                            <label>CONFIRM NEW PASSWORD</label>
+                            <input type="password" placeholder="Verify new password">
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn-primary">
+                            Update Profile Details <i class='bx bx-save'></i>
+                        </button>
+                        <button type="button" class="btn-secondary">
+                            Back to Dashboard
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

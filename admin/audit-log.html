@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Audit Log | EvidenceLock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        :root {
+            --primary: #0284c7; --bg-light: #f8fafc; --text-dark: #0f172a; 
+            --text-muted: #64748b; --border: #e2e8f0; --white: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Manrope', sans-serif; }
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; }
+
+        /* --- TOP HEADER --- */
+        header {
+            background: var(--white); padding: 20px 40px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .admin-profile { display: flex; align-items: center; gap: 12px; }
+        .admin-profile img { width: 40px; border-radius: 50%; border: 2px solid var(--primary); }
+        .badge-admin { background: #fee2e2; color: #ef4444; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; }
+
+        .sidebar { width: 280px; background: var(--text-dark); color: white; padding: 30px 20px; position: fixed; height: 100vh; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; margin-bottom: 50px; }
+        .logo i { color: #0ea5e9; font-size: 2rem; }
+        .nav-links { list-style: none; }
+        .nav-links a { display: flex; align-items: center; gap: 15px; color: #94a3b8; text-decoration: none; padding: 12px 15px; border-radius: 12px; font-weight: 600; }
+        .nav-links a.active { background: rgba(14, 165, 233, 0.1); color: #0ea5e9; }
+
+        .main-wrapper { margin-left: 280px; flex: 1; padding: 40px; }
+        .page-header { margin-bottom: 30px; }
+        .log-container { background: var(--white); border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); overflow: hidden; }
+
+        table { width: 100%; border-collapse: collapse; }
+        thead { background: #f1f5f9; border-bottom: 2px solid var(--border); }
+        th { padding: 20px; text-align: left; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        td { padding: 18px 20px; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+
+        .event-type { padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; }
+        .type-security { background: #fee2e2; color: #ef4444; }
+        .type-data { background: #dcfce7; color: #10b981; }
+        .type-access { background: #e0e7ff; color: #6366f1; }
+
+        .timestamp { font-family: monospace; color: var(--text-muted); font-size: 0.8rem; }
+        .footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85rem; }
+
+        
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo"><i class='bx bxs-shield-alt-2'></i><span>EvidenceLock</span></div>
+        <ul class="nav-links">
+            <li><a href="admin-dashboard.html"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
+            <li><a href="update.html"><i class='bx bxs-group'></i> User Management</a></li>
+            <li><a href="create-case.html"><i class='bx bxs-folder-plus'></i> Case Creation</a></li>
+            <li><a href="#" class="active"><i class='bx bxs-receipt'></i> Master Logs</a></li>
+            <li><a href="case-evidence-log.html"><i class='bx bxs-file-find'></i> Evidence Registry</a></li>
+            <li><a href="case-status.html"><i class='bx bx-transfer-alt'></i> Change Status</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <header>
+            <div class="header-left">
+                <span style="font-weight: 700; color: var(--text-muted);">Admin Control Panel</span>
+            </div>
+            <div class="admin-profile">
+                <span class="badge-admin">SYSTEM ADMIN</span>
+                <img src="https://ui-avatars.com/api/?name=Admin&background=0f172a&color=fff" alt="Admin">
+            </div>
+        </header>
+        <div class="page-header">
+            <h2>System Audit Trails</h2>
+            <p style="color: var(--text-muted);">Immutable record of all system activities and administrative changes.</p>
+        </div>
+
+        <div class="log-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>User Role</th>
+                        <th>Event Category</th>
+                        <th>Action Description</th>
+                        <th>IP Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="timestamp">2026-01-03 10:45:12</td>
+                        <td><b>Investigator Alex</b></td>
+                        <td><span class="event-type type-data">EVIDENCE_UPLOAD</span></td>
+                        <td>Uploaded file <i>CCTV_Entrance.mp4</i> to CASE-X49</td>
+                        <td>192.168.1.45</td>
+                    </tr>
+                    <tr>
+                        <td class="timestamp">2026-01-03 11:02:05</td>
+                        <td><b>Admin Sarah</b></td>
+                        <td><span class="event-type type-security">CASE_LOCKED</span></td>
+                        <td>Finalized and Locked CASE-X50 status</td>
+                        <td>10.0.0.12</td>
+                    </tr>
+                    <tr>
+                        <td class="timestamp">2026-01-03 11:20:00</td>
+                        <td><b>Auditor Robert</b></td>
+                        <td><span class="event-type type-access">REPORT_EXPORT</span></td>
+                        <td>Generated Audit Report for CASE-X49</td>
+                        <td>172.16.254.1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="footer">&copy; 2026 EvidenceLock | All actions are cryptographically signed.</p>
+    </div>
+</body>
+</html>
